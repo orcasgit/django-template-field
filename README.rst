@@ -5,8 +5,8 @@ django-template-field
 .. image:: https://badge.fury.io/py/django-template-field.png
     :target: https://badge.fury.io/py/django-template-field
 
-.. image:: https://travis-ci.org/grokcode/django-template-field.png?branch=master
-    :target: https://travis-ci.org/grokcode/django-template-field
+.. image:: https://travis-ci.org/orcasgit/django-template-field.png?branch=master
+    :target: https://travis-ci.org/orcasgit/django-template-field
 
 A Django template field with a manager to return the rendered template.
 

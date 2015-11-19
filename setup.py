@@ -39,7 +39,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author='Jess Johnson',
     author_email='jess@grokcode.com',
-    url='https://github.com/grokcode/django-template-field',
+    url='https://github.com/orcasgit/django-template-field',
     packages=[
         'templatefield',
     ],
