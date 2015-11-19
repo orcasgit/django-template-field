@@ -24,31 +24,31 @@ Install django-template-field::
 
 Then use it in a project::
 
-    import templatefield
+```
+from django.db import models
 
-Features
---------
+from templatefield import fields, managers
 
-* TODO
+
+class TemplatedText(models.Model):
+    value = fields.TemplateTextField()
+
+    # Manger that returns rendered templates.
+    objects_rendered = managers.RenderTemplateManager()
+    # Django's default manager returns unrendered templates.
+    objects_unrendered = models.Manager()
+```
+
+Extra context can be added in `settings` like so:
+
+    TEMPLATE_FIELD_CONTEXT = { 'template_var': value }
+
 
 Running Tests
 --------------
 
-Does the code actually work?
-
-::
 
     source <YOURVIRTUALENV>/bin/activate
     (myenv) $ pip install -r requirements-test.txt
     (myenv) $ python runtests.py
 
-Credits
----------
-
-Tools used in rendering this package:
-
-*  Cookiecutter_
-*  `cookiecutter-pypackage`_
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`cookiecutter-pypackage`: https://github.com/pydanny/cookiecutter-djangopackage
