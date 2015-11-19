@@ -9,7 +9,7 @@ class TemplateTextField(models.TextField):
         if value is None:
             return None
 
-        if not context.get('show_rendered', False):
+        if not context.get('show_rendered'):
             # `show_rendered` flag is unset, return the templeate
             return value
 
