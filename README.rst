@@ -24,20 +24,18 @@ Install django-template-field::
 
 Then use it in a project::
 
-```
-from django.db import models
+    from django.db import models
 
-from templatefield import fields, managers
+    from templatefield import fields, managers
 
 
-class TemplatedText(models.Model):
-    value = fields.TemplateTextField()
+    class TemplatedText(models.Model):
+        value = fields.TemplateTextField()
 
-    # Manger that returns rendered templates.
-    objects_rendered = managers.RenderTemplateManager()
-    # Django's default manager returns unrendered templates.
-    objects_unrendered = models.Manager()
-```
+        # Manger that returns rendered templates.
+        objects_rendered = managers.RenderTemplateManager()
+        # Django's default manager returns unrendered templates.
+        objects_unrendered = models.Manager()
 
 Extra context can be added in `settings` like so:
 
