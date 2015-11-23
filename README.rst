@@ -41,6 +41,10 @@ Extra context can be added in `settings` like so:
 
     TEMPLATE_FIELD_CONTEXT = { 'template_var': value }
 
+Context can also be added to querysets like so:
+
+    TemplatedText.objects_rendered.with_context({'template_var2': value2})
+
 
 Running Tests
 --------------
