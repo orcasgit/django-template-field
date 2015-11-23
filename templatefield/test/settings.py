@@ -20,3 +20,5 @@ DATABASES = {
 }
 
 MIDDLEWARE_CLASSES = ()
+
+TEMPLATE_FIELD_CONTEXT = {'template_var': 'Dogs'}

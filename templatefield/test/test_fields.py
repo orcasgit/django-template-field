@@ -7,10 +7,13 @@ test_django-template-field
 
 Tests for `django-template-field` fields.
 """
-
+import pytest
 from django.test.utils import override_settings
 
 from .models import TemplatedText
+
+
+pytestmark = pytest.mark.django_db
 
 
 class TestTemplatefield(object):
@@ -22,11 +25,16 @@ class TestTemplatefield(object):
 
     def test_unrendered(self):
         self.setUp()
-        tt = TemplatedText.ojects_unrendered.first()
-        self.assertEqual(tt.value, self.tmpl)
+        tt = TemplatedText.objects_unrendered.first()
+        assert tt.value == self.tmpl
 
-    @override_settings(TEMPLATE_FIELD_CONTEXT={'template_var': 'Dogs'})
     def test_rendered(self):
         self.setUp()
         tt = TemplatedText.objects_rendered.first()
-        self.assertEqul(tt.value, "Dogs are pretty neat")
+        assert tt.value == "Dogs are pretty neat"
+
+    def test_qs_context(self):
+        self.setUp()
+        tt = TemplatedText.objects_rendered.with_context(
+            {'template_var': 'Cats'}).first()
+        assert tt.value == "Cats are pretty neat"
