@@ -51,6 +51,6 @@ Running Tests
 
 
     source <YOURVIRTUALENV>/bin/activate
-    (myenv) $ pip install -r requirements-test.txt
+    (myenv) $ pip install -r requirements/test.txt
     (myenv) $ python runtests.py
 
