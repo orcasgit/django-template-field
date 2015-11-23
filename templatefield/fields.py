@@ -15,6 +15,7 @@ class TemplateTextField(models.TextField):
 
         # Return the rendered template
         template = Template(value)
-        context_dict = context.get('tmpl_context', {})
+        context_dict = {}
         context_dict.update(settings.TEMPLATE_FIELD_CONTEXT)
+        context_dict.update(context.get('tmpl_context', {}))
         return template.render(Context(context_dict))
