@@ -32,7 +32,7 @@ Then use it in a project::
     class TemplatedText(models.Model):
         value = fields.TemplateTextField()
 
-        # Manger that returns rendered templates. This will be the default
+        # Manager that returns rendered templates. This will be the default
         # manager since it is first. Now, when accessed via `Related Models`_
         # this field will also be rendered.
         objects_rendered = managers.RenderTemplateManager()
