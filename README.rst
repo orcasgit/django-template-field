@@ -32,7 +32,9 @@ Then use it in a project::
     class TemplatedText(models.Model):
         value = fields.TemplateTextField()
 
-        # Manger that returns rendered templates.
+        # Manager that returns rendered templates. This will be the default
+        # manager since it is first. Now, when accessed via `Related Models`_
+        # this field will also be rendered.
         objects_rendered = managers.RenderTemplateManager()
         # Django's default manager returns unrendered templates.
         objects_unrendered = models.Manager()
@@ -46,6 +48,30 @@ Context can also be added to querysets like so:
     TemplatedText.objects_rendered.with_context({'template_var2': value2})
 
 
+Related Models
+--------------
+
+If a ``TemplateTextField`` will be accessed from another model through a
+``ForeignKey`` relationship, Django will use the default manager to render the
+``TemplateTextField``. For example, if we define this additional model:
+
+    class RelatedToTemplatedText(models.Model):
+        templated_text = models.ForeignKey(TemplatedText)
+
+We can expect to see fields accessed via ``templated_text`` rendered properly.
+
+Admin
+-----
+
+Using ``RenderTemplateManager`` as the default has the unfortunate side effect
+of rendering your fields in the Django admin, so we have provided a class from
+which you can inherit to solve that problem. Ex:
+
+    from templatefield import admin
+
+    class TemplatedTextAdmin(admin.UnrenderedAdmin):
+        ...
+
 Running Tests
 --------------
 
@@ -53,4 +79,3 @@ Running Tests
     source <YOURVIRTUALENV>/bin/activate
     (myenv) $ pip install -r requirements/test.txt
     (myenv) $ python runtests.py
-

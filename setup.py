@@ -32,6 +32,7 @@ if sys.argv[-1] == 'tag':
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
+python_version = (sys.version_info.major, sys.version_info.minor)
 setup(
     name='django-template-field',
     version=version,
@@ -44,8 +45,7 @@ setup(
         'templatefield',
     ],
     include_package_data=True,
-    install_requires=[
-    ],
+    install_requires=['django<1.9'] if python_version == (3, 3) else [],
     license="BSD",
     zip_safe=False,
     keywords='django-template-field',
@@ -62,6 +62,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',        
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: Implementation :: PyPy'
     ],
 )
