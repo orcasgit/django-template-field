@@ -11,3 +11,4 @@ Contributors
 ------------
 
 * Percy Perez <percyp3@gmail.com>
+* Brad Pitcher <bradpitcher@gmail.com>

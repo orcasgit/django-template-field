@@ -2,6 +2,7 @@ from django.db import models
 
 
 class RenderTemplateManager(models.Manager):
+    use_for_related_fields = True
 
     def get_queryset(self):
         qs = super(RenderTemplateManager, self).get_queryset()
