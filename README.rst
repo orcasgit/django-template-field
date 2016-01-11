@@ -47,6 +47,10 @@ Context can also be added to querysets like so:
 
     TemplatedText.objects_rendered.with_context({'template_var2': value2})
 
+Add the following to `settings` to disable rendering globally:
+
+    TEMPLATE_FIELD_RENDER = False
+
 
 Related Models
 --------------
