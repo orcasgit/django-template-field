@@ -39,7 +39,7 @@ Then use it in a project::
         # Django's default manager returns unrendered templates.
         objects_unrendered = models.Manager()
 
-Extra context can be added in `settings` like so:
+Extra context can be added in ``settings`` like so:
 
     TEMPLATE_FIELD_CONTEXT = { 'template_var': value }
 
@@ -47,9 +47,15 @@ Context can also be added to querysets like so:
 
     TemplatedText.objects_rendered.with_context({'template_var2': value2})
 
-Add the following to `settings` to disable rendering globally:
+If you dump fixtures with ``RenderTemplateManager`` as the default manager,
+django will render the exported data. To work around that, create an alternate
+settings file for your project with the following setting:
 
     TEMPLATE_FIELD_RENDER = False
+
+Then you can dump your unrendered data like so:
+
+    ./manage.py dumpdata myapp.mymodel --settings=myapp.dump_settings
 
 
 Related Models
