@@ -3,6 +3,18 @@
 History
 -------
 
+0.3.1 (2016-01-11)
+++++++++++++++++++
+
+* Add setting to disable rendering
+
+
+0.3.0 (2016-01-06)
+++++++++++++++++++
+
+* Enable rendering in related field access
+
+
 0.2.0 (2015-10-23)
 ++++++++++++++++++
 
