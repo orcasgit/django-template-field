@@ -39,21 +39,21 @@ Then use it in a project::
         # Django's default manager returns unrendered templates.
         objects_unrendered = models.Manager()
 
-Extra context can be added in ``settings`` like so:
+Extra context can be added in ``settings`` like so::
 
     TEMPLATE_FIELD_CONTEXT = { 'template_var': value }
 
-Context can also be added to querysets like so:
+Context can also be added to querysets like so::
 
     TemplatedText.objects_rendered.with_context({'template_var2': value2})
 
 If you dump fixtures with ``RenderTemplateManager`` as the default manager,
 django will render the exported data. To work around that, create an alternate
-settings file for your project with the following setting:
+settings file for your project with the following setting::
 
     TEMPLATE_FIELD_RENDER = False
 
-Then you can dump your unrendered data like so:
+Then you can dump your unrendered data like so::
 
     ./manage.py dumpdata myapp.mymodel --settings=myapp.dump_settings
 
@@ -63,7 +63,7 @@ Related Models
 
 If a ``TemplateTextField`` will be accessed from another model through a
 ``ForeignKey`` relationship, Django will use the default manager to render the
-``TemplateTextField``. For example, if we define this additional model:
+``TemplateTextField``. For example, if we define this additional model::
 
     class RelatedToTemplatedText(models.Model):
         templated_text = models.ForeignKey(TemplatedText)
@@ -75,7 +75,7 @@ Admin
 
 Using ``RenderTemplateManager`` as the default has the unfortunate side effect
 of rendering your fields in the Django admin, so we have provided a class from
-which you can inherit to solve that problem. Ex:
+which you can inherit to solve that problem. Ex::
 
     from templatefield import admin
 
@@ -85,6 +85,7 @@ which you can inherit to solve that problem. Ex:
 Running Tests
 --------------
 
+::
 
     source <YOURVIRTUALENV>/bin/activate
     (myenv) $ pip install -r requirements/test.txt
